@@ -7,12 +7,9 @@ import './Login.css';
 
 export default function Login({ setUser, usersList }: InferProps<typeof Login.propTypes>) {
 
-
     const onFinish = (values: any) => {
         const user = usersList.find(item => item.username === values.username && item.password === values.password)
         setUser(user);
-        console.log(user);
-        
         window.localStorage["user"] = user?.username;
       };
 

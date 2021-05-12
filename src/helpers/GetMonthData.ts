@@ -44,8 +44,8 @@ export function getMonthData(year: number, month: number) {
     const date = new Date(year, month);
     const daysInMonth = getDaysInMonth(date);
     const monthStartsOn = getDaysOfWeek(date);
-    
     let day = 1;
+
     for (let i = 0; i < (daysInMonth + monthStartsOn) / daysInWeek; i++) {
         result[i] = [];
 
