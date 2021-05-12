@@ -1,0 +1,33 @@
+.calendar__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    width: 56%;
+    background: #8581811f;
+    border-radius: 50px;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.04204);
+}
+
+.navigation__selects {
+    display: flex;
+    width: 250px;
+    justify-content: space-between;
+}
+
+select {
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
+}
+
+.weekdays {
+    text-align: center;
+}

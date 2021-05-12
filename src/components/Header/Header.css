@@ -1,0 +1,16 @@
+.top {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #dbdbdb;
+}
+.username {
+    font-size: 20px bold;
+    opacity: 1;
+}
+
+.exit_btn {
+    width: 150px;
+}

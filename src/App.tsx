@@ -1,24 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
+
+import { Calendar, Login } from './components';
+
 import './App.css';
 
 function App() {
+  const [user, setUser] = React.useState(null);
+  const me = window.localStorage.user;
+
+  const usersList = [
+    {
+        id: 1,
+        username: 'user',
+        password: 'user',
+    },
+    {
+        id: 2,
+        username: 'user2',
+        password: 'user2',
+    },
+]
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {me ? <Calendar user={user} setUser={setUser} usersList={usersList}/> : <Login setUser={setUser} usersList={usersList} />}
     </div>
   );
 }
