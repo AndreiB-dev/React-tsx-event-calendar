@@ -35,9 +35,7 @@ export default function Calendar({
         if (yearRef && yearRef.current && monthRef && monthRef.current) {
             const year = Number(yearRef.current.value);
             const month = Number(monthRef.current.value);
-
             const newDate = new Date(year, month);
-
             setDate(newDate);
         }
     }
@@ -55,8 +53,6 @@ export default function Calendar({
     };
 
     const selectDay = (date: Date) => {
-        console.log(date);
-
         setSelectedDate(date);
     };
 
@@ -119,10 +115,11 @@ export default function Calendar({
                                         day ? (
                                             <td key={index}>
                                                 <Day
-                                                    event={eventsList.filter((event) =>
-                                                        event.date.toDateString() ===
-                                                        day.toDateString()
-                                                            )}
+                                                    event={eventsList.filter(
+                                                        (event) =>
+                                                            event.date.toDateString() ===
+                                                            day.toDateString(),
+                                                    )}
                                                     day={day}
                                                     selectDay={selectDay}
                                                 />
@@ -136,7 +133,11 @@ export default function Calendar({
                         )}
                 </tbody>
             </table>
-            <CreateEvent eventsList={eventsList} setEventsList={setEventsList} usersList={usersList} />
+            <CreateEvent
+                eventsList={eventsList}
+                setEventsList={setEventsList}
+                usersList={usersList}
+            />
         </div>
     );
 }

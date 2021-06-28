@@ -1,27 +1,32 @@
-import React from 'react';
+import React from "react";
 import PropTypes, { InferProps } from "prop-types";
 import { Button, Modal, DatePicker, Select, Input } from "antd";
 
-import './CreateEvent.css';
+import "./CreateEvent.css";
 
 const { Option } = Select;
 
-export default function CreateEvent({setEventsList, eventsList, usersList}: InferProps<typeof CreateEvent.propTypes>) {
+export default function CreateEvent({
+    setEventsList,
+    eventsList,
+    usersList,
+}: InferProps<typeof CreateEvent.propTypes>) {
     const me = window.localStorage.user;
-    
+
     const [isModalVisible, setIsModalVisible] = React.useState(false);
     const [date, setDate] = React.useState(null);
     const [userList, setUserList] = React.useState(usersList);
-    const [user, setUser] = React.useState('');
-    const [event, setEvent] = React.useState('');
-    
+    const [user, setUser] = React.useState("");
+    const [event, setEvent] = React.useState("");
+
     const options = userList.map((user) => (
-        <Option key={user.id} value={user.username}>{user.username}</Option>
+        <Option key={user.id} value={user.username}>
+            {user.username}
+        </Option>
     ));
-    
+
     const generateId = Math.floor(Math.random() * 1000);
-    
-    
+
     const showModal = () => {
         setIsModalVisible(true);
     };
@@ -29,29 +34,28 @@ export default function CreateEvent({setEventsList, eventsList, usersList}: Infe
     const closeModal = () => {
         setIsModalVisible(false);
         setDate(null);
-        setUser('');
-        setEvent('');
-        
+        setUser("");
+        setEvent("");
     };
 
     const onChangeDate = (date: any) => {
         if (date) {
-            console.log(date._d);
-            setDate(date._d)
+            setDate(date._d);
         }
     };
 
     const onSearch = (value: string) => {
-        
-        setUserList(usersList.filter((user) => user.username.toLowerCase().indexOf(value.toLowerCase()) >= 0))
+        setUserList(
+            usersList.filter(
+                (user) =>
+                    user.username.toLowerCase().indexOf(value.toLowerCase()) >=
+                    0,
+            ),
+        );
     };
 
     const onChangeSelect = (value: string) => {
         setUser(value);
-    };
-
-    const onSelectUser = (userId: any) => {
-        console.log(userId);
     };
 
     const onCreateEvent = () => {
@@ -60,21 +64,20 @@ export default function CreateEvent({setEventsList, eventsList, usersList}: Infe
             date: date,
             description: event,
             author: me,
-            user: user
+            user: user,
         };
-        setEventsList([
-            ...eventsList,
-            newEvent,
-        ]);
+        setEventsList([...eventsList, newEvent]);
         setDate(null);
-        setUser('');
-        setEvent('');
-    }
+        setUser("");
+        setEvent("");
+    };
 
     return (
         <div className="calendar__footer">
             <div>
-                <Button type="primary" size='large' onClick={showModal}>Новое событие</Button>
+                <Button type="primary" size="large" onClick={showModal}>
+                    Новое событие
+                </Button>
             </div>
             <Modal
                 title="Создать событие"
@@ -92,8 +95,8 @@ export default function CreateEvent({setEventsList, eventsList, usersList}: Infe
                         Создать
                     </Button>,
                 ]}>
-                 <p>Выбирете дату</p>
-                 <DatePicker onChange={onChangeDate} />   
+                <p>Выбирете дату</p>
+                <DatePicker onChange={onChangeDate} />
                 <p>Найдите кого вы хотите пригласить</p>
                 <Select
                     showSearch
@@ -105,17 +108,18 @@ export default function CreateEvent({setEventsList, eventsList, usersList}: Infe
                     filterOption={false}
                     onSearch={onSearch}
                     onChange={onChangeSelect}
-                    onSelect={onSelectUser}
                     notFoundContent={"Не найдено"}>
                     {options}
                 </Select>
                 <p>Название события</p>
-                <Input value={event}
-                    onChange={(e) => setEvent(e.target.value)} />
+                <Input
+                    value={event}
+                    onChange={(e) => setEvent(e.target.value)}
+                />
             </Modal>
         </div>
     );
-};
+}
 
 CreateEvent.propTypes = {
     setEventsList: PropTypes.func.isRequired,
