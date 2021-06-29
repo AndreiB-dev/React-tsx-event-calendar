@@ -67,9 +67,7 @@ export default function CreateEvent({
             user: user,
         };
         setEventsList([...eventsList, newEvent]);
-        setDate(null);
-        setUser("");
-        setEvent("");
+        closeModal();
     };
 
     return (

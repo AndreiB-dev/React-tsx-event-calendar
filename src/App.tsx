@@ -19,12 +19,17 @@ function App() {
             username: "user2",
             password: "user2",
         },
+        {
+            id: 3,
+            username: "user3",
+            password: "user3",
+        },
     ];
 
     return (
         <div className="App">
             {me ? (
-                <Calendar user={user} setUser={setUser} usersList={usersList} />
+                <Calendar setUser={setUser} usersList={usersList} />
             ) : (
                 <Login setUser={setUser} usersList={usersList} />
             )}

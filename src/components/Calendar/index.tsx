@@ -12,7 +12,6 @@ export default function Calendar({
     years,
     monthNames,
     weekDayNames,
-    user,
     setUser,
     events,
     usersList,
@@ -42,13 +41,11 @@ export default function Calendar({
 
     const handlePrevMonthButtonClick = () => {
         const newDate = new Date(date.getFullYear(), date.getMonth() - 1);
-        console.log("prev", newDate);
         setDate(newDate);
     };
 
     const handleNextMonthButtonClick = () => {
         const newDate = new Date(date.getFullYear(), date.getMonth() + 1);
-        console.log("next", newDate);
         setDate(newDate);
     };
 
@@ -58,7 +55,7 @@ export default function Calendar({
 
     return (
         <div className="calendar__wrapper">
-            <Header user={user} setUser={setUser} />
+            <Header  setUser={setUser} />
             <div className="navigation">
                 <Button
                     shape="circle"
@@ -147,11 +144,6 @@ Calendar.propTypes = {
     monthNames: PropTypes.array.isRequired,
     weekDayNames: PropTypes.array.isRequired,
     setUser: PropTypes.func.isRequired,
-    user: PropTypes.exact({
-        id: PropTypes.number,
-        username: PropTypes.string,
-        password: PropTypes.string,
-    }),
     events: PropTypes.arrayOf(
         PropTypes.exact({
             id: PropTypes.number.isRequired,

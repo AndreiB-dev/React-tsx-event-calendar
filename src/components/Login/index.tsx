@@ -9,8 +9,8 @@ export default function Login({ setUser, usersList }: InferProps<typeof Login.pr
 
     const onFinish = (values: any) => {
         const user = usersList.find(item => item.username === values.username && item.password === values.password)
-        setUser(user);
         window.localStorage["user"] = user?.username;
+        setUser(user);
       };
 
     return (

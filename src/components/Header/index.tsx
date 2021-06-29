@@ -5,13 +5,12 @@ import PropTypes, { InferProps } from "prop-types";
 import "./Header.css";
 
 export default function Header({
-    user,
     setUser,
 }: InferProps<typeof Header.propTypes>) {
     const me = window.localStorage.user;
     const onExit = () => {
-        setUser(null);
         window.localStorage.clear();
+        setUser(null);
     };
     return (
         <div className="top">
@@ -26,9 +25,4 @@ export default function Header({
 
 Header.propTypes = {
     setUser: PropTypes.func.isRequired,
-    user: PropTypes.exact({
-        id: PropTypes.number,
-        username: PropTypes.string,
-        password: PropTypes.string,
-    }),
 };
