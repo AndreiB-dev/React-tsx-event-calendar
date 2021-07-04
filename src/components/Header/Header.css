@@ -1,16 +1,20 @@
 .top {
     width: 100%;
+    height: 80px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 20px;
+    align-items: center;
     border-bottom: 1px solid #dbdbdb;
 }
 .username {
-    font-size: 20px bold;
-    opacity: 1;
+    margin-bottom: 0px;
+    font-size: 30px;
+    font-weight: 600;
+    opacity: 0.9;
 }
 
 .exit_btn {
+    margin-right: 20px;
     width: 150px;
 }
